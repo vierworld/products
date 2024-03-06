@@ -29,7 +29,8 @@ public class CustomException extends RuntimeException {
 
   public enum ErrorCodes {
       NOT_FOUND(HttpStatus.NOT_FOUND),
-      NOT_ENOUGH_RESOURCES(HttpStatus.CONFLICT);
+      NOT_ENOUGH_RESOURCES(HttpStatus.CONFLICT),
+      INVALID_INPUT(HttpStatus.CONFLICT);
 
       private HttpStatus httpStatus;
       ErrorCodes(HttpStatus httpStatus) {
