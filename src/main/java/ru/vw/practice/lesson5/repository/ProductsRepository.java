@@ -1,12 +1,12 @@
 package ru.vw.practice.lesson5.repository;
 
-import ru.vw.practice.lesson5.dto.Product;
+import ru.vw.practice.lesson5.entity.ProductEntity;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ProductsRepository {
-  List<Product> getByUserId(long userId);
+  List<ProductEntity> getByUserId(long userId);
 
-  Optional<Product> getByProductId(long productId);
+  Optional<ProductEntity> getByProductId(long productId);
 }

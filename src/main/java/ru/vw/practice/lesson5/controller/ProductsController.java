@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.vw.practice.lesson5.dto.PaymentRequest;
-import ru.vw.practice.lesson5.dto.Product;
+import ru.vw.practice.lesson6.dto.Product;
 import ru.vw.practice.lesson5.exception.CustomException;
 import ru.vw.practice.lesson5.service.ProductsService;
 

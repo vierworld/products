@@ -1,19 +1,21 @@
-package ru.vw.practice.lesson5.dto;
+package ru.vw.practice.lesson5.entity;
 
 import java.math.BigDecimal;
 
-public class Product {
+public class ProductEntity {
   private Long productId;
   private Long userId;
   private String billNumber;
   private BigDecimal balance;
-  private ProductType productType;
+  private Integer productType;
+  public ProductEntity() {
+  }
 
-  public Product(Long productId,
-                 Long userId,
-                 String billNumber,
-                 BigDecimal balance,
-                 ProductType productType) {
+  public ProductEntity(Long productId,
+                       Long userId,
+                       String billNumber,
+                       BigDecimal balance,
+                       Integer productType) {
     this.productId = productId;
     this.userId = userId;
     this.billNumber = billNumber;
@@ -53,11 +55,11 @@ public class Product {
     this.balance = balance;
   }
 
-  public ProductType getProductType() {
+  public Integer getProductType() {
     return productType;
   }
 
-  public void setProductType(ProductType productType) {
+  public void setProductType(Integer productType) {
     this.productType = productType;
   }
 
@@ -70,7 +72,7 @@ public class Product {
     private Long userId;
     private String billNumber;
     private BigDecimal balance;
-    private ProductType productType;
+    private Integer productType;
 
     public ProductBuilder productId(Long productId) {
       this.productId = productId;
@@ -92,33 +94,18 @@ public class Product {
       return this;
     }
 
-    public ProductBuilder productType(ProductType productType) {
+    public ProductBuilder productType(int productType) {
       this.productType = productType;
       return this;
     }
 
 
-    public Product build() {
-      return new Product(productId,
+    public ProductEntity build() {
+      return new ProductEntity(productId,
               userId,
               billNumber,
               balance,
               productType);
-    }
-  }
-
-  public enum ProductType {
-    BILL(1),
-    CARD(2);
-
-    private int code;
-
-    ProductType(int code) {
-      this.code = code;
-    }
-
-    public int getCode() {
-      return code;
     }
   }
 }

@@ -2,7 +2,9 @@ package ru.vw.practice.lesson5.service.impl;
 
 import org.springframework.stereotype.Service;
 import ru.vw.practice.lesson5.dto.PaymentRequest;
-import ru.vw.practice.lesson5.dto.Product;
+import ru.vw.practice.lesson5.entity.ProductEntity;
+import ru.vw.practice.lesson5.utils.ProductMapperUtils;
+import ru.vw.practice.lesson6.dto.Product;
 import ru.vw.practice.lesson5.dto.ProductsInfoResponse;
 import ru.vw.practice.lesson5.exception.CustomException;
 import ru.vw.practice.lesson5.repository.ProductsRepository;
@@ -23,12 +25,12 @@ public class ProductsServiceImpl implements ProductsService {
 
   @Override
   public ProductsInfoResponse getByUserId(long userId) {
-    return new ProductsInfoResponse(productsRepository.getByUserId(userId));
+    return new ProductsInfoResponse(ProductMapperUtils.mapProductEntityListToProductList(productsRepository.getByUserId(userId)));
   }
 
   @Override
   public Optional<Product> getByProductId(long productId) {
-    return productsRepository.getByProductId(productId);
+    return productsRepository.getByProductId(productId).map(ProductMapperUtils::mapProductEntityToProduct);
   }
 
   @Override
@@ -39,21 +41,21 @@ public class ProductsServiceImpl implements ProductsService {
               CustomException.ErrorCodes.INVALID_INPUT);
     }
 
-    Optional<Product> product = productsRepository.getByProductId(request.getProductId());
+    Optional<ProductEntity> product = productsRepository.getByProductId(request.getProductId());
 
     if (product.isEmpty()) {
       throw new CustomException("Отсутствует заданный продукт",
               CustomException.ErrorCodes.INVALID_INPUT);
     }
 
-    product.ifPresent(a-> {
+    product.ifPresent(a -> {
       if (Objects.compare(a.getBalance(), request.getAmount(), Comparator.naturalOrder()) >= 0) {
         a.setBalance(a.getBalance().subtract(request.getAmount()));
       } else {
         throw new CustomException("Недостаточно средств", CustomException.ErrorCodes.NOT_ENOUGH_RESOURCES);
       }
     });
-    return product;
+    return product.map(ProductMapperUtils::mapProductEntityToProduct);
   }
 
 }

@@ -2,6 +2,7 @@ package ru.vw.practice.lesson5.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.util.CollectionUtils;
+import ru.vw.practice.lesson6.dto.Product;
 
 import java.util.List;
 
