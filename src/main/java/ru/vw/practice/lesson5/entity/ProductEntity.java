@@ -1,13 +1,36 @@
 package ru.vw.practice.lesson5.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.math.BigDecimal;
 
+
+@Entity
+@Table(name = "product", schema = "csep")
 public class ProductEntity {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "product_id")
   private Long productId;
+
+  @Column(name = "user_id")
   private Long userId;
+
+  @Column(name = "bill_number")
   private String billNumber;
+
+  @Column(name = "balance")
   private BigDecimal balance;
+
+  @Column(name = "product_type")
   private Integer productType;
+
   public ProductEntity() {
   }
 
