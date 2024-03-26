@@ -1,19 +1,44 @@
-package ru.vw.practice.lesson5.dto;
+package ru.vw.practice.lesson5.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.math.BigDecimal;
 
-public class Product {
-  private Long productId;
-  private Long userId;
-  private String billNumber;
-  private BigDecimal balance;
-  private ProductType productType;
 
-  public Product(Long productId,
-                 Long userId,
-                 String billNumber,
-                 BigDecimal balance,
-                 ProductType productType) {
+@Entity
+@Table(name = "product", schema = "csep")
+public class ProductEntity {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "product_id")
+  private Long productId;
+
+  @Column(name = "user_id")
+  private Long userId;
+
+  @Column(name = "bill_number")
+  private String billNumber;
+
+  @Column(name = "balance")
+  private BigDecimal balance;
+
+  @Column(name = "product_type")
+  private Integer productType;
+
+  public ProductEntity() {
+  }
+
+  public ProductEntity(Long productId,
+                       Long userId,
+                       String billNumber,
+                       BigDecimal balance,
+                       Integer productType) {
     this.productId = productId;
     this.userId = userId;
     this.billNumber = billNumber;
@@ -53,11 +78,11 @@ public class Product {
     this.balance = balance;
   }
 
-  public ProductType getProductType() {
+  public Integer getProductType() {
     return productType;
   }
 
-  public void setProductType(ProductType productType) {
+  public void setProductType(Integer productType) {
     this.productType = productType;
   }
 
@@ -70,7 +95,7 @@ public class Product {
     private Long userId;
     private String billNumber;
     private BigDecimal balance;
-    private ProductType productType;
+    private Integer productType;
 
     public ProductBuilder productId(Long productId) {
       this.productId = productId;
@@ -92,33 +117,18 @@ public class Product {
       return this;
     }
 
-    public ProductBuilder productType(ProductType productType) {
+    public ProductBuilder productType(int productType) {
       this.productType = productType;
       return this;
     }
 
 
-    public Product build() {
-      return new Product(productId,
+    public ProductEntity build() {
+      return new ProductEntity(productId,
               userId,
               billNumber,
               balance,
               productType);
-    }
-  }
-
-  public enum ProductType {
-    BILL(1),
-    CARD(2);
-
-    private int code;
-
-    ProductType(int code) {
-      this.code = code;
-    }
-
-    public int getCode() {
-      return code;
     }
   }
 }
