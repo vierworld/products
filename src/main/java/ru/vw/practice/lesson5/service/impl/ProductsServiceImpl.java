@@ -3,8 +3,8 @@ package ru.vw.practice.lesson5.service.impl;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import ru.vw.practice.lesson5.utils.ProductMapperUtils;
-import ru.vw.practice.lesson6.dto.ProductDto;
-import ru.vw.practice.lesson6.dto.ProductsInfoResponse;
+import ru.vw.practice.lesson.dto.ProductDto;
+import ru.vw.practice.lesson.dto.ProductsInfoResponse;
 import ru.vw.practice.lesson5.repository.ProductsRepository;
 import ru.vw.practice.lesson5.service.ProductsService;
 

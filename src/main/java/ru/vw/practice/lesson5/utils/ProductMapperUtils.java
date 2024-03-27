@@ -2,7 +2,7 @@ package ru.vw.practice.lesson5.utils;
 
 import org.springframework.util.CollectionUtils;
 import ru.vw.practice.lesson5.entity.ProductEntity;
-import ru.vw.practice.lesson6.dto.ProductDto;
+import ru.vw.practice.lesson.dto.ProductDto;
 
 import java.util.Collections;
 import java.util.List;

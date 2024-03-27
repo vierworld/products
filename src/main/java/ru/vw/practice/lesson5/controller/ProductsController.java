@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.vw.practice.lesson6.dto.ProductDto;
-import ru.vw.practice.lesson5.exception.CustomException;
+import ru.vw.practice.lesson.dto.ProductDto;
+import ru.vw.practice.lesson.exception.CustomException;
 import ru.vw.practice.lesson5.service.ProductsService;
-import ru.vw.practice.lesson6.dto.ProductsInfoResponse;
+import ru.vw.practice.lesson.dto.ProductsInfoResponse;
 
 import java.util.Optional;
 
